@@ -4,6 +4,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
 import re
 
+
 def removewords(listoftokens, listofWords):
     return [token for token in listoftokens if token not in listofWords]
 
