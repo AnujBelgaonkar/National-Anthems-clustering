@@ -24,7 +24,8 @@ def create_map(gdf):
             'color': 'black',
             'weight': 1,
             'fillOpacity': 0.5,
-        }
+        },
+        tooltip=folium.GeoJsonTooltip(fields=['Label','name'], aliases=['Cluster:','Country:'])
     ).add_to(m)
     folium.LayerControl().add_to(m)
     return m
