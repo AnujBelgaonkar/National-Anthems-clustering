@@ -1,0 +1,19 @@
+[theme]
+primaryColor = "#1F77B4"  # A pleasant shade of blue
+backgroundColor = "#919191"  # Light grey for a clean look
+secondaryBackgroundColor = "#FFFFFF"  # White for contrast with containers
+textColor = "#333333"  # Dark grey for easy readability
+font = "sans serif"  # Modern, clean font
+
+[server]
+headless = true
+port = 8501
+enableCORS = false
+
+[general]
+page_title = "National Anthems Analysis"
+page_icon = "🌍"
+
+[logger]
+level = "debug"
+format = "%(asctime)s %(message)s"

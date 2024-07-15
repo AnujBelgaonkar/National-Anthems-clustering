@@ -36,11 +36,12 @@ def applyLemmetization(listoftokens, lemmatizer):
     return lemmatized_tokens
 
 def remove_special_words(sentence):
+    sentence = re.sub('\W_',' ', sentence) 
+    sentence= re.sub("\S*\d\S*"," ", sentence)
+    sentence = re.sub(r"\S*@\S*\s?", " ", sentence)    # Remove mentions and emails
     sentence = re.sub(r'https?\S+', '', sentence)  # Remove URLs starting with http or https
     sentence = re.sub(r'www\S+', '', sentence)    # Remove URLs starting with www
     sentence = re.sub(r'[^A-Za-z0-9\s]', '', sentence)  # Remove special characters
-    sentence = re.sub(r"\S*@\S*\s?", " ", sentence)    # Remove mentions and emails
-    sentence = re.sub("\S*\d\S*"," ", sentence) 
     return sentence
 
 def twoLetters(listOfTokens):

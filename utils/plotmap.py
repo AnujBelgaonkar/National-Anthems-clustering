@@ -15,7 +15,7 @@ def load_data(clusters):
     return gdf
 
 def create_map(gdf):
-    m = folium.Map(location=[0, 0], zoom_start=2, max_bounds=True,max_zoom=4,min_zoom=2)
+    m = folium.Map(location=[0, 0], zoom_start=2, max_bounds=True,max_zoom=4,min_zoom=2,tiles='Esri WorldImagery')
     label_colors = {label: colors[i] for i, label in enumerate(gdf['Label'].unique())}
     folium.GeoJson(
         gdf,

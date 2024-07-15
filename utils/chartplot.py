@@ -36,7 +36,7 @@ def pieplot(k):
     final = pieplotdata(k)
     label_colors = {label: colors[i] for i, label in enumerate(final['Cluster'].unique())}
     fig = px.pie(final,values='Count',names='Cluster',
-                 color_discrete_map=label_colors)
+color_discrete_map=label_colors,title="                                                                         Cluster Distribution")
     st.plotly_chart(fig)
 
 
