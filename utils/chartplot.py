@@ -7,6 +7,7 @@ colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46
 @st.cache_data
 def freqworddata(k,cluster):
     data = pd.read_csv(r'E:\Projects\National Anthems\data\wordcounts\word_count_df_kmeans{}.csv'.format(k))
+    data['category'] = data['category']+1
     cluster_data = data[data['category'] == cluster]
     cluster_data = cluster_data.sort_values(by = 'count').tail(10)
     return cluster_data
@@ -15,7 +16,7 @@ def plotfreqwords(k,cluster):
     cluster_data = freqworddata(k,cluster)
     if not cluster_data.empty:
         fig = px.bar(cluster_data,x = 'count', y = 'word', orientation='h',color='count',height=400)
-        st.plotly_chart(fig,use_container_width=True)
+        return fig
 
     else:
         st.write("No data available for the specified cluster number.")
@@ -23,6 +24,7 @@ def plotfreqwords(k,cluster):
 @st.cache_data
 def pieplotdata(k):
     labels= pd.read_csv(f'E:/Projects/National Anthems/labels/kmeans{k}.csv')
+    labels = labels + 1
     data = pd.read_csv(r'E:\Projects\National Anthems\data\national_anthems.csv')
     data = data['Country']
     final = pd.concat([data,labels],axis=1)
@@ -35,7 +37,7 @@ def pieplot(k):
     label_colors = {label: colors[i] for i, label in enumerate(final['Cluster'].unique())}
     fig = px.pie(final,values='Count',names='Cluster',
                  color_discrete_map=label_colors)
-    st.plotly_chart(fig,)
+    st.plotly_chart(fig)
 
 
 

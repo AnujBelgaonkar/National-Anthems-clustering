@@ -10,15 +10,16 @@ colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46
 def load_data(clusters):
     df = pd.read_csv(r"E:\Projects\National Anthems\data\geoplots\kmeans{}.csv".format(clusters))
     df['geometry'] = df['geometry'].apply(wkt.loads)
+    df['Label'] = df['Label']+1
     gdf = gpd.GeoDataFrame(df, geometry='geometry', crs="EPSG:4326")
     return gdf
 
 def create_map(gdf):
-    m = folium.Map(location=[0, 0], zoom_start=2, max_bounds=True)
+    m = folium.Map(location=[0, 0], zoom_start=2, max_bounds=True,max_zoom=4,min_zoom=2)
     label_colors = {label: colors[i] for i, label in enumerate(gdf['Label'].unique())}
     folium.GeoJson(
         gdf,
-        name='nationalanthems',
+        name='nationalanthems', 
         style_function=lambda feature: {
             'fillColor': label_colors[feature['properties']['Label']],
             'color': 'black',
@@ -27,5 +28,4 @@ def create_map(gdf):
         },
         tooltip=folium.GeoJsonTooltip(fields=['Label','name'], aliases=['Cluster:','Country:'])
     ).add_to(m)
-    folium.LayerControl().add_to(m)
     return m
