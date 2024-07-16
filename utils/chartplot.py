@@ -7,7 +7,7 @@ colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46
 
 @st.cache_data
 def freqworddata(k,cluster):
-    pathfreq = 'data\wordcounts\word_count_df_kmeans{}.csv'.format(k)
+    pathfreq = 'data/wordcounts/word_count_df_kmeans{}.csv'.format(k)
     data = pd.read_csv(pathfreq)
     data['category'] = data['category']+1
     cluster_data = data[data['category'] == cluster]
@@ -25,7 +25,7 @@ def plotfreqwords(k,cluster):
 
 @st.cache_data
 def pieplotdata(k):
-    labelpath = 'labels\kmeans{}.csv'.format(k)
+    labelpath = 'labels/kmeans{}.csv'.format(k)
     labels= pd.read_csv(labelpath)
     labels = labels + 1
     datapath = 'data\processed_anthems.csv'

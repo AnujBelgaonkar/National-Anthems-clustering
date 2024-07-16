@@ -47,9 +47,9 @@ def twoLetters(listOfTokens):
     return [token for token in listOfTokens if len(token) <= 2 or len(token) >= 21]
 
 def processCorpus(corpus, language='english'):
-    countries_path = "lists\countries.txt"
-    nationalities_path = "lists\nationalities.txt"
-    extra_words_path = "lists\stopwords_scrapmaker.txt"
+    countries_path = "lists/countries.txt"
+    nationalities_path = "lists/nationalities.txt"
+    extra_words_path = "lists/stopwords_scrapmaker.txt"
     processed_corpus = []
     stopwords = set(nltk.corpus.stopwords.words(language))
     countries = [line.rstrip('\n') for line in open(countries_path)]
