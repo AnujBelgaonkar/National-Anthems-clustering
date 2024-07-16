@@ -1,7 +1,7 @@
 [theme]
 primaryColor = "#1F77B4"  # A pleasant shade of blue
 backgroundColor = "#919191"  # Light grey for a clean look
-secondaryBackgroundColor = "#FFFFFF"  # White for contrast with containers
+secondaryBackgroundColor = "#B0E0E6"  
 textColor = "#333333"  # Dark grey for easy readability
 font = "sans serif"  # Modern, clean font
 
