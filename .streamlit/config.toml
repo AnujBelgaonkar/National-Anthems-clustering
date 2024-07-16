@@ -14,6 +14,3 @@ enableCORS = false
 page_title = "National Anthems Analysis"
 page_icon = "🌍"
 
-[logger]
-level = "debug"
-format = "%(asctime)s %(message)s"
