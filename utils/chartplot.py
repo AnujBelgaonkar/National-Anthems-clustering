@@ -28,7 +28,7 @@ def pieplotdata(k):
     labelpath = 'labels/kmeans{}.csv'.format(k)
     labels= pd.read_csv(labelpath)
     labels = labels + 1
-    datapath = 'data\processed_anthems.csv'
+    datapath = 'data/processed_anthems.csv'
     data = pd.read_csv(datapath)
     data = data['Country']
     final = pd.concat([data,labels],axis=1)
