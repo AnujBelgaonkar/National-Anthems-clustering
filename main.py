@@ -36,7 +36,7 @@ def main():
         k = st.slider(label='Select number of clusters', min_value=5, max_value=20)
         gdf = load_data(k)
         if not gdf.empty:
-            with st.container(height=360):  # Wrap the map rendering inside a container
+            with st.container(height=360,border=False):  # Wrap the map rendering inside a container
                 m = create_map(gdf)
                 st_folium(m, height=360, width=800)  # Set height and width explicitly
     with right:
