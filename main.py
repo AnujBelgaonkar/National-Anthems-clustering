@@ -6,7 +6,7 @@ import streamlit as st
 from streamlit_folium import st_folium
 from utils.plotmap import load_data, create_map
 from utils.chartplot import plotfreqwords, pieplot
-
+import sys
 st.set_page_config(
     page_title='National Anthems Analysis',
     layout='wide',
@@ -15,6 +15,9 @@ st.set_page_config(
 
 def main():
     # Centering the title using HTML with additional styling
+    projectroot = r"E:\Projects\National Anthems"
+    if projectroot not in sys.path:
+        sys.path.append(projectroot)
     st.markdown(
         """
         <style>

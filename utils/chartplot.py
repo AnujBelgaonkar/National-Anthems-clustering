@@ -1,12 +1,14 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import os
 colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000']
 
 
 @st.cache_data
 def freqworddata(k,cluster):
-    data = pd.read_csv('data\wordcounts\word_count_df_kmeans{}.csv'.format(k))
+    pathfreq = 'data\wordcounts\word_count_df_kmeans{}.csv'.format(k)
+    data = pd.read_csv(pathfreq)
     data['category'] = data['category']+1
     cluster_data = data[data['category'] == cluster]
     cluster_data = cluster_data.sort_values(by = 'count').tail(10)
@@ -23,9 +25,11 @@ def plotfreqwords(k,cluster):
 
 @st.cache_data
 def pieplotdata(k):
-    labels= pd.read_csv(f'labels/kmeans{k}.csv')
+    labelpath = 'labels\kmeans{}.csv'.format(k)
+    labels= pd.read_csv(labelpath)
     labels = labels + 1
-    data = pd.read_csv(r'data\national_anthems.csv')
+    datapath = 'data\processed_anthems.csv'
+    data = pd.read_csv(datapath)
     data = data['Country']
     final = pd.concat([data,labels],axis=1)
     final = final.groupby('Label',as_index=False).count()

@@ -8,7 +8,8 @@ colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46
 
 @st.cache_data
 def load_data(clusters):
-    df = pd.read_csv("data\geoplots\kmeans{}.csv".format(clusters))
+    path = 'data\geoplots\kmeans{}.csv'.format(clusters)
+    df = pd.read_csv(path)
     df['geometry'] = df['geometry'].apply(wkt.loads)
     df['Label'] = df['Label']+1
     gdf = gpd.GeoDataFrame(df, geometry='geometry', crs="EPSG:4326")

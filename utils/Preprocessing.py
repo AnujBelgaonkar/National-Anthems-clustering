@@ -4,7 +4,6 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
 import re
 
-
 def removewords(listoftokens, listofWords):
     return [token for token in listoftokens if token not in listofWords]
 
@@ -48,11 +47,14 @@ def twoLetters(listOfTokens):
     return [token for token in listOfTokens if len(token) <= 2 or len(token) >= 21]
 
 def processCorpus(corpus, language='english'):
+    countries_path = "lists\countries.txt"
+    nationalities_path = "lists\nationalities.txt"
+    extra_words_path = "lists\stopwords_scrapmaker.txt"
     processed_corpus = []
     stopwords = set(nltk.corpus.stopwords.words(language))
-    countries = [line.rstrip('\n') for line in open("lists\countries.txt")]
-    nationalities= [line.rstrip('\n') for line in open("lists\nationalities.txt")]
-    extra_words = [line.rstrip('\n') for line in open("lists\stopwords_scrapmaker.txt")]
+    countries = [line.rstrip('\n') for line in open(countries_path)]
+    nationalities= [line.rstrip('\n') for line in open(nationalities_path)]
+    extra_words = [line.rstrip('\n') for line in open(extra_words_path)]
     lemmatizer = WordNetLemmatizer()
     for document in corpus:
         document = document.replace(u'\ufffd', '8')
