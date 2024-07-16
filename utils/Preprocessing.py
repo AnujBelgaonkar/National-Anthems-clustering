@@ -50,9 +50,9 @@ def twoLetters(listOfTokens):
 def processCorpus(corpus, language='english'):
     processed_corpus = []
     stopwords = set(nltk.corpus.stopwords.words(language))
-    countries = [line.rstrip('\n') for line in open(r"E:\Projects\National Anthems\lists\countries.txt")]
-    nationalities= [line.rstrip('\n') for line in open(r"E:\Projects\National Anthems\lists\nationalities.txt")]
-    extra_words = [line.rstrip('\n') for line in open(r"E:\Projects\National Anthems\lists\stopwords_scrapmaker.txt")]
+    countries = [line.rstrip('\n') for line in open("lists\countries.txt")]
+    nationalities= [line.rstrip('\n') for line in open("lists\nationalities.txt")]
+    extra_words = [line.rstrip('\n') for line in open("lists\stopwords_scrapmaker.txt")]
     lemmatizer = WordNetLemmatizer()
     for document in corpus:
         document = document.replace(u'\ufffd', '8')

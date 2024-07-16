@@ -6,7 +6,7 @@ colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46
 
 @st.cache_data
 def freqworddata(k,cluster):
-    data = pd.read_csv(r'E:\Projects\National Anthems\data\wordcounts\word_count_df_kmeans{}.csv'.format(k))
+    data = pd.read_csv('data\wordcounts\word_count_df_kmeans{}.csv'.format(k))
     data['category'] = data['category']+1
     cluster_data = data[data['category'] == cluster]
     cluster_data = cluster_data.sort_values(by = 'count').tail(10)
@@ -23,9 +23,9 @@ def plotfreqwords(k,cluster):
 
 @st.cache_data
 def pieplotdata(k):
-    labels= pd.read_csv(f'E:/Projects/National Anthems/labels/kmeans{k}.csv')
+    labels= pd.read_csv(f'labels/kmeans{k}.csv')
     labels = labels + 1
-    data = pd.read_csv(r'E:\Projects\National Anthems\data\national_anthems.csv')
+    data = pd.read_csv(r'data\national_anthems.csv')
     data = data['Country']
     final = pd.concat([data,labels],axis=1)
     final = final.groupby('Label',as_index=False).count()
