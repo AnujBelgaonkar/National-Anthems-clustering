@@ -15,9 +15,6 @@ st.set_page_config(
 
 def main():
     # Centering the title using HTML with additional styling
-    projectroot = r"E:\Projects\National Anthems"
-    if projectroot not in sys.path:
-        sys.path.append(projectroot)
     st.markdown(
         """
         <style>
